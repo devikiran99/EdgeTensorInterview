@@ -1,0 +1,28 @@
+package com.devikiran.edgetesorinterview.service
+
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistry
+
+class ServiceLifecycleOwner() : LifecycleOwner {
+
+    override val lifecycle: Lifecycle
+        get() {
+          return  registry
+        }
+    private val registry = LifecycleRegistry(this)
+
+    init {
+        registry.currentState = Lifecycle.State.CREATED
+    }
+
+    fun start() {
+        registry.currentState = Lifecycle.State.STARTED
+    }
+
+    fun stop() {
+        registry.currentState = Lifecycle.State.DESTROYED
+    }
+
+
+}
