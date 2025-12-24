@@ -1,11 +1,11 @@
 package com.devikiran.edgetesorinterview.repository
 
-import com.devikiran.edgetesorinterview.data.CameraRecorder
-import com.devikiran.edgetesorinterview.data.GpsCollector
+import com.devikiran.edgetesorinterview.data.source.CameraRecorder
+import com.devikiran.edgetesorinterview.data.source.GpsCollector
 import com.devikiran.edgetesorinterview.data.LogManager
-import com.devikiran.edgetesorinterview.data.SensorCollector
-import com.devikiran.edgetesorinterview.data.SystemStatsCollector
-import com.devikiran.edgetesorinterview.data.HealthDataUploader
+import com.devikiran.edgetesorinterview.data.source.SensorCollector
+import com.devikiran.edgetesorinterview.data.source.SystemStatsCollector
+import com.devikiran.edgetesorinterview.repository.HealthDataUploader
 
 class HealthMonitorRepository (
     private val systemStatsCollector: SystemStatsCollector,

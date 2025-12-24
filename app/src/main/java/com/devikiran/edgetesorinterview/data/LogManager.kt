@@ -24,9 +24,8 @@ class LogManager(private val context: Context) {
 
         try {
             logFile.appendText(line)
-            Log.e("LogManager sss", line)
+            Log.d("LogManager", line)
         } catch (e: Exception) {
-            // Never crash the service because of logging
             Log.e("LogManager", "Failed to write log", e)
         }
     }

@@ -1,4 +1,4 @@
-package com.devikiran.edgetesorinterview.data
+package com.devikiran.edgetesorinterview.data.source
 
 import android.content.Context
 import androidx.camera.core.CameraSelector
@@ -61,6 +61,6 @@ class CameraRecorder(
             cameraProvider.unbindAll()
             lifecycleOwner.stop()
 
-            return@withContext videoFile.absolutePath
+            videoFile.absolutePath
         }
 }

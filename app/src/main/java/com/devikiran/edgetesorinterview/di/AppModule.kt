@@ -1,13 +1,13 @@
 package com.devikiran.edgetesorinterview.di
 
 import android.content.Context
-import com.devikiran.edgetesorinterview.data.CameraRecorder
-import com.devikiran.edgetesorinterview.data.GpsCollector
+import com.devikiran.edgetesorinterview.data.source.CameraRecorder
+import com.devikiran.edgetesorinterview.data.source.GpsCollector
 import com.devikiran.edgetesorinterview.data.LogManager
 import com.devikiran.edgetesorinterview.util.NotificationUtil
-import com.devikiran.edgetesorinterview.data.SensorCollector
-import com.devikiran.edgetesorinterview.data.SystemStatsCollector
-import com.devikiran.edgetesorinterview.data.HealthDataUploader
+import com.devikiran.edgetesorinterview.data.source.SensorCollector
+import com.devikiran.edgetesorinterview.data.source.SystemStatsCollector
+import com.devikiran.edgetesorinterview.repository.HealthDataUploader
 import com.devikiran.edgetesorinterview.network.HealthDataApi
 import com.devikiran.edgetesorinterview.repository.HealthMonitorRepository
 import com.devikiran.edgetesorinterview.util.Util

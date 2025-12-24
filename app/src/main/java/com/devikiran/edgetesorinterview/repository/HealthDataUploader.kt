@@ -1,10 +1,10 @@
-package com.devikiran.edgetesorinterview.data
+package com.devikiran.edgetesorinterview.repository
 
 import android.content.Context
 import android.os.Build
+import com.devikiran.edgetesorinterview.data.LogManager
 import com.devikiran.edgetesorinterview.network.HealthDataApi
 import com.devikiran.edgetesorinterview.network.model.HealthData
-import com.devikiran.edgetesorinterview.data.LogManager
 import com.devikiran.edgetesorinterview.util.NetworkUtils
 
 class HealthDataUploader(

@@ -43,7 +43,7 @@ class HealthMonitorService : Service() {
         serviceScope.launch {
             while (isActive) {
                 repository.runHealthCycle()
-                delay(5.minutes)
+                delay(1.minutes)
             }
         }
     }

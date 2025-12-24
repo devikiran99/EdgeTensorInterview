@@ -1,4 +1,4 @@
-package com.devikiran.edgetesorinterview.data
+package com.devikiran.edgetesorinterview.data.source
 
 import android.app.ActivityManager
 import android.content.Context
@@ -6,7 +6,6 @@ import android.os.StatFs
 import androidx.core.content.getSystemService
 
 class SystemStatsCollector(private val context: Context) {
-
     fun collect(): String {
         val am = context.getSystemService<ActivityManager>()
         val mem = ActivityManager.MemoryInfo().apply { am?.getMemoryInfo(this) }
@@ -22,7 +21,7 @@ class SystemStatsCollector(private val context: Context) {
     }
 
     private fun readCpuUsage(): Float {
-        // /proc/stat parsing (lightweight)
+        //TODO yet to implement
         return 0.0f
     }
 }

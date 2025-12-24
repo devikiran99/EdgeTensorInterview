@@ -1,4 +1,4 @@
-package com.devikiran.edgetesorinterview.data
+package com.devikiran.edgetesorinterview.data.source
 
 import android.content.Context
 import android.hardware.Sensor
@@ -12,11 +12,9 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 
-
 class SensorCollector(
     private val context: Context
 ) {
-
     suspend fun collect(): SensorData =
         withContext(Dispatchers.Default) {
 
@@ -50,8 +48,8 @@ class SensorCollector(
                     }
                 }
 
-            val accel = read(Sensor.TYPE_ACCELEROMETER)?.contentToString()  ?: "unavailable"
-            val gyro = read(Sensor.TYPE_GYROSCOPE)?.contentToString()  ?: "unavailable"
+            val accel = read(Sensor.TYPE_ACCELEROMETER)?.contentToString() ?: "unavailable"
+            val gyro = read(Sensor.TYPE_GYROSCOPE)?.contentToString() ?: "unavailable"
 
             SensorData(
                 accelerometer = accel,
