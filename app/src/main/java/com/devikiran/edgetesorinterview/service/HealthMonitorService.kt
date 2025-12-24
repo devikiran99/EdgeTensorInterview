@@ -1,7 +1,11 @@
 package com.devikiran.edgetesorinterview.service
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.app.Service
+import android.content.Context
 import android.content.Intent
+import android.os.SystemClock
 import com.devikiran.edgetesorinterview.util.NotificationUtil
 import com.devikiran.edgetesorinterview.repository.HealthMonitorRepository
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,19 +47,43 @@ class HealthMonitorService : Service() {
         serviceScope.launch {
             while (isActive) {
                 repository.runHealthCycle()
-                delay(1.minutes)
+                delay(5.minutes)
             }
         }
     }
 
 
+    override fun onStartCommand(
+        intent: Intent?,
+        flags: Int,
+        startId: Int
+    ): Int {
+        scheduleRestartWatchdog()
+        return START_STICKY
+    }
+
 
     override fun onDestroy() {
-
         serviceScope.cancel()
-        startForegroundService(Intent(this, HealthMonitorService::class.java))
         super.onDestroy()
     }
 
     override fun onBind(intent: Intent?) = null
+
+    private fun scheduleRestartWatchdog() {
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        val intent = Intent(this, HealthMonitorService::class.java)
+        val pendingIntent = PendingIntent.getService(
+            this,
+            0,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        alarmManager.setAndAllowWhileIdle(
+            AlarmManager.ELAPSED_REALTIME_WAKEUP,
+            SystemClock.elapsedRealtime() + 10 * 60 * 1000,
+            pendingIntent
+        )
+    }
 }
